@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 
 import static movie.UserMenu.*;
 
+
 public class Main {
+
+
     /**
      * A class that will handle all of the console menu
      *
@@ -17,108 +20,183 @@ public class Main {
      *  Find a member’s contact phone number, given the member’s full name
      */
     public static void main(String[] args) throws IOException {
-        /* We need some type of event loop
-        that reads each input nad break when it
-        reads a 0
-        * */
 
-        /* Create a buffered reader for user input */
+        // Username and password from the user
+        String givenUsername;
+        String givenPassword;
+
+        boolean staffIsLoggedIn = false;
+        boolean memberIsLoggedIn;
+
+        final String staffUsername = "staff";
+        final int staffPassword= 1234;
+
+        MovieCollection allMovies = new MovieCollection();
+
+        MemberCollection allMembers = new MemberCollection();
+
+        allMembers.populateListWithTestMembers();
+
+        allMovies.populateBinaryTreeWithMoviesTitles();
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
 
        int nextInput=1000;
-        /* Reading data using readline */
-        while(nextInput != 0){
+
+
+        while(true){
 
             displayWelcomeMenu();
 
-            /* Prepare String for user input */
             String input;
 
-            /* Read user input */
             input = reader.readLine();
 
             try{
-                /* Parse user input into int */
+
                 nextInput = Integer.parseInt(input);
+
             }catch (NumberFormatException e)
             {
                 System.out.println("Invalid input");
             }
 
-            //TODO Login manager
+            if(nextInput == 0 ){
+                break;
+            }
 
             if( nextInput == 1 ){
 
-                /* !!! We're inside of the Staff !!! */
-                while(nextInput != 0)
-                {
-                    displayStaffMenu();
+                System.out.println("Enter username");
 
-                    /* Read user input */
-                    input = reader.readLine();
-                    try{
-                        nextInput = Integer.parseInt(input);
-                    }catch (NumberFormatException e)
+                input = reader.readLine();
+
+                givenUsername = input;
+
+                //TODO Handling for only input of 4 ints
+                System.out.println("Enter password");
+
+                input = reader.readLine();
+
+                givenPassword = input;
+
+                // Compare the given username and password with the Staff login credentials
+                if(( givenUsername.compareTo(staffUsername) == 0 ) && (Integer.parseInt(givenPassword) == staffPassword ))
+                {
+                    System.out.println("Staff member has Logging in. Welcome!");
+                    staffIsLoggedIn = true;
+                }
+                else{
+
+                    System.out.println("Incorrect login details!");
+                }
+
+                if(staffIsLoggedIn){
+
+                    /* !!! We're inside of the Staff !!! */
+                    while(nextInput != 0 && staffIsLoggedIn )
                     {
-                        System.out.println("Invalid input");
-                    }
-                    switch(nextInput){
-                        case 0:
-                            break;
-                        case 1:
-                            MovieCollection.AddMovie();
-                        case 2:
-                            MovieCollection.removeMovie();
-                        case 3:
-                            MemberCollection.newMember();
-                        case 4:
-                            MemberCollection.findMember();
-                        default:
-                            System.out.println("Invalid input");
+                        displayStaffMenu();
+
+                        input = reader.readLine();
+                        try{
+                            nextInput = Integer.parseInt(input);
+
+                        }catch (NumberFormatException e)
+                        {
+                            System.out.println("Exception Invalid input");
+                        }
+                        switch(nextInput){
+
+                            case 0:
+                                System.out.println("Returning to Main Menu and logging you out");
+                                staffIsLoggedIn =false;
+                                break;
+                            case 1:
+                                allMovies.addMovie();
+                                break;
+                            case 2:
+                                allMovies.removeMovie();
+                                break;
+                            case 3:
+                                allMembers.addMember();
+                                break;
+                            case 4:
+                                allMembers.findMember();
+                                break;
+                            default:
+                                System.out.println("Default Invalid input");
+
+                        }
 
                     }
 
                 }
+
 
             }
 
+
             if( nextInput == 2){
+                // Staff member login
 
-                /* !!! We're inside of Member !!! */
-                while(nextInput != 0)
-                {
-                    displayMemberMenu();
+                System.out.println("Enter username");
 
-                    /* Read user input */
-                    input = reader.readLine();
-                    try{
-                        nextInput = Integer.parseInt(input);
-                    }catch (NumberFormatException e)
+                input = reader.readLine();
+
+                givenUsername = input;
+
+                System.out.println("Enter password");
+
+                input = reader.readLine();
+
+                givenPassword = input;
+
+                memberIsLoggedIn = allMembers.memberLogin(givenUsername, givenPassword);
+
+                if ( memberIsLoggedIn){
+                    /* !!! We're inside of Member !!! */
+                    while(nextInput != 0 && memberIsLoggedIn)
                     {
-                        System.out.println("Invalid input");
-                    }
-                    switch(nextInput){
-                        case 0:
-                            break;
-                        case 1:
-                            MovieCollection.displayAllMovies();
-                        case 2:
-                            MovieCollection.borrowMovie();
-                        case 3:
-                            MovieCollection.returnMovie();
-                        case 4:
-                            MovieCollection.currentlyBorrowed();
-                        case 5:
-                            MovieCollection.displayTop10();
-                        default:
-                            System.out.println("Invalid input");
+                        displayMemberMenu();
+
+                        input = reader.readLine();
+
+                        try{
+                            nextInput = Integer.parseInt(input);
+                        }catch (NumberFormatException e)
+                        {
+                            System.out.println("Exception Invalid input");
+                        }
+                        switch(nextInput){
+                            case 0:
+                                System.out.println("Returning to Main Menu and logging you out");
+                                memberIsLoggedIn =false;
+                                break;
+                            case 1:
+                                MovieCollection.displayAllMovies();
+                            case 2:
+                                MovieCollection.borrowMovie();
+                            case 3:
+                                MovieCollection.returnMovie();
+                            case 4:
+                                MovieCollection.currentlyBorrowed();
+                            case 5:
+                                MovieCollection.displayTop10();
+                            default:
+                                System.out.println("Default Invalid input");
+
+                        }
 
                     }
+
+                }else{
+
+                    System.out.println("Incorrect Login details");
 
                 }
-
 
 
             }

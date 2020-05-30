@@ -22,9 +22,37 @@ public class Movie {
     private Genres genre;
     private Classifications classification;
     private int duration;
-    private int releaseDate;
+    private String releaseDate;
     private int copies;
+    private int copiesAvailable;
     private int timesRented;
+
+    public void incrementTimesRented() {
+        this.timesRented++;
+    }
+
+    public void incrementCopiesAvailable(){
+        if (copiesAvailable > copies){
+            System.out.println("Opps, You've tried to return an non existent copy");
+        }else{
+            System.out.println("Incremented copies available");
+            this.copiesAvailable++;
+        }
+
+    }
+    public void decrementCopiesAvailable(){
+        if (copiesAvailable < 1){
+            System.out.println("Opps, there is no more copies to lease");
+        }else{
+            System.out.println("Decremented copies available");
+            this.copiesAvailable--;
+        }
+
+    }
+
+    public int getCopiesAvailable(){
+        return this.copiesAvailable;
+    }
 
     enum Classifications {
         G,
@@ -90,20 +118,22 @@ public class Movie {
         this.duration = duration;
     }
 
-    public int getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(int releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
     public int getCopies() {
         return copies;
     }
-
+    /**
+     * Only used when staff adds a movie to the movie list*/
     public void setCopies(int copies) {
         this.copies = copies;
+        this.copiesAvailable = copies;
     }
 
     public int getTimesRented() {
@@ -113,7 +143,6 @@ public class Movie {
     public void setTimesRented(int timesRented) {
         this.timesRented = timesRented;
     }
-
 
     public String getTitle() {
         return title;

@@ -30,7 +30,7 @@ public class UserMenu {
     }
 
     public static void displayMemberMenu(){
-        String staffMenu =  "============Member Menu===========\n" +
+        String memberMenu =  "============Member Menu===========\n" +
                 "1. Display all movies\n" +
                 "2. Borrow a movie DVD\n" +
                 "3. Return a movie DVD\n" +
@@ -39,7 +39,7 @@ public class UserMenu {
                 "0. Return to main menu\n" +
                 "===============================\n" +
                 "Please make a selection (1-5, or 0 to return to main menu)";
-        System.out.println(staffMenu);
+        System.out.println(memberMenu);
 
     }
 

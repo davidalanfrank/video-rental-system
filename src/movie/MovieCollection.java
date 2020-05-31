@@ -24,12 +24,8 @@ public class MovieCollection {
      */
     public void addMovie() throws IOException {
 
-
-
-        /* The new member to be added to the array */
         Movie newMovie = new Movie();
 
-        /* Create a buffered reader for user input */
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -38,108 +34,120 @@ public class MovieCollection {
         input = reader.readLine();
         newMovie.setTitle(input);
 
-//        System.out.println("Enter what actors star in the movie: ");
-//        input = reader.readLine();
-//        newMovie.setStarring(input);
-//
-//        System.out.println("Enter the movie director: ");
-//        input = reader.readLine();
-//        newMovie.setDirector(input);
-//
-//        String genreMenu =  "Select one of the following for the movie's genre: \n" +
-//                "1. Drama\n" +
-//                "2. Adventure\n" +
-//                "3. Family\n" +
-//                "4. Action\n" +
-//                "5. SciFi\n" +
-//                "6. Comedy\n" +
-//                "7. Animated\n" +
-//                "8. Thriller\n" +
-//                "9. Other\n" +
-//                "===============================\n" +
-//                "Please make a selection (1-9)";
-//
-//        System.out.println(genreMenu);
-//        input = reader.readLine();
-//
-//        int nextInput=0;
-//        try{
-//            nextInput = Integer.parseInt(input);
-//            System.out.println("#####DEBUG:  AddMovie(): nextInput is: ");
-//            System.out.println(nextInput);
-//        }catch (NumberFormatException e)
-//        {
-//            System.out.println("Exception Invalid input");
-//        }
-//        switch(nextInput){
-//            case 1:
-//                newMovie.setGenre(Movie.Genres.Drama);
-//            case 2:
-//                newMovie.setGenre(Movie.Genres.Adventure);
-//            case 3:
-//                newMovie.setGenre(Movie.Genres.Family);
-//            case 4:
-//                newMovie.setGenre(Movie.Genres.Action);
-//            case 5:
-//                newMovie.setGenre(Movie.Genres.SciFi);
-//            case 6:
-//                newMovie.setGenre(Movie.Genres.Comedy);
-//            case 7:
-//                newMovie.setGenre(Movie.Genres.Animated);
-//            case 8:
-//                newMovie.setGenre(Movie.Genres.Thriller);
-//            case 9:
-//                newMovie.setGenre(Movie.Genres.Other);
-//            default:
-//                System.out.println("Default Invalid input");
-//
-//        }
-//
-//
-//        String classificationMenu =  "Select one of the following for the movie's genre: \n" +
-//                "1. General (G)\n" +
-//                "2. Parental Guidance (PG)\n" +
-//                "3. Mature (M15+)\n" +
-//                "4. Mature Accompanied (MA15+)\n" +
-//                "===============================\n" +
-//                "Please make a selection (1-4)";
-//
-//        System.out.println(classificationMenu);
-//        input = reader.readLine();
-//
-//        nextInput=0;
-//        try{
-//            nextInput = Integer.parseInt(input);
-//        }catch (NumberFormatException e)
-//        {
-//            System.out.println("Invalid input");
-//        }
-//        switch(nextInput){
-//            case 1:
-//                newMovie.setClassification(Movie.Classifications.G);
-//            case 2:
-//                newMovie.setClassification(Movie.Classifications.PG);
-//            case 3:
-//                newMovie.setClassification(Movie.Classifications.M);
-//            case 4:
-//                newMovie.setClassification(Movie.Classifications.MA);
-//            default:
-//                System.out.println("Invalid input");
-//
-//        }
-//
-//        System.out.println("Enter the movie duration (minutes): ");
-//        input = reader.readLine();
-//        try{
-//
-//        }catch(NumberFormatException e){
-//            System.out.println("Must be an integer (eg. 120)");
-//        }
-//        newMovie.setDuration(Integer.parseInt(input));
-//
-//        System.out.println("Enter the movie release date (DD/MM/YYYY):");
-//        input = reader.readLine();
-//        newMovie.setReleaseDate(input);
+        System.out.println("Enter what actors star in the movie: ");
+        input = reader.readLine();
+        newMovie.setStarring(input);
+
+        System.out.println("Enter the movie director: ");
+        input = reader.readLine();
+        newMovie.setDirector(input);
+
+        String genreMenu =  "Select one of the following for the movie's genre: \n" +
+                "1. Drama\n" +
+                "2. Adventure\n" +
+                "3. Family\n" +
+                "4. Action\n" +
+                "5. SciFi\n" +
+                "6. Comedy\n" +
+                "7. Animated\n" +
+                "8. Thriller\n" +
+                "9. Other\n" +
+                "===============================\n" +
+                "Please make a selection (1-9)";
+
+        System.out.println(genreMenu);
+        input = reader.readLine();
+
+        int nextInput=0;
+        try{
+            nextInput = Integer.parseInt(input);
+        }catch (NumberFormatException e)
+        {
+            System.out.println("Exception Invalid input");
+        }
+        switch(nextInput){
+            case 1:
+                newMovie.setGenre(Movie.Genres.Drama);
+                break;
+            case 2:
+                newMovie.setGenre(Movie.Genres.Adventure);
+                break;
+            case 3:
+                newMovie.setGenre(Movie.Genres.Family);
+                break;
+            case 4:
+                newMovie.setGenre(Movie.Genres.Action);
+                break;
+            case 5:
+                newMovie.setGenre(Movie.Genres.SciFi);
+                break;
+            case 6:
+                newMovie.setGenre(Movie.Genres.Comedy);
+                break;
+            case 7:
+                newMovie.setGenre(Movie.Genres.Animated);
+                break;
+            case 8:
+                newMovie.setGenre(Movie.Genres.Thriller);
+                break;
+            case 9:
+                newMovie.setGenre(Movie.Genres.Other);
+                break;
+            default:
+                System.out.println("Default Invalid input");
+                break;
+
+        }
+
+
+        String classificationMenu =  "Select one of the following for the movie's genre: \n" +
+                "1. General (G)\n" +
+                "2. Parental Guidance (PG)\n" +
+                "3. Mature (M15+)\n" +
+                "4. Mature Accompanied (MA15+)\n" +
+                "===============================\n" +
+                "Please make a selection (1-4)";
+
+        System.out.println(classificationMenu);
+        input = reader.readLine();
+
+        nextInput=0;
+        try{
+            nextInput = Integer.parseInt(input);
+        }catch (NumberFormatException e)
+        {
+            System.out.println("Invalid input");
+        }
+        switch(nextInput){
+            case 1:
+                newMovie.setClassification(Movie.Classifications.G);
+                break;
+            case 2:
+                newMovie.setClassification(Movie.Classifications.PG);
+                break;
+            case 3:
+                newMovie.setClassification(Movie.Classifications.M);
+                break;
+            case 4:
+                newMovie.setClassification(Movie.Classifications.MA);
+                break;
+            default:
+                System.out.println("Invalid input");
+
+        }
+
+        System.out.println("Enter the movie duration (minutes): ");
+        input = reader.readLine();
+        try{
+
+        }catch(NumberFormatException e){
+            System.out.println("Must be an integer (eg. 120)");
+        }
+        newMovie.setDuration(Integer.parseInt(input));
+
+        System.out.println("Enter the movie release date (DD/MM/YYYY):");
+        input = reader.readLine();
+        newMovie.setReleaseDate(input);
 
         System.out.println("Enter how many copies are available: ");
         input = reader.readLine();
@@ -150,14 +158,11 @@ public class MovieCollection {
         newMovie.setCopies(Integer.parseInt(input));
 
 
-        /* A new node to place in the binary tree */
         this.bTree.addNode(newMovie.getTitle(), newMovie);
 
 
-        System.out.println("The following movie has been added to the movie list.");
-        System.out.println(newMovie.getTitle());
-
-
+        System.out.println("The following movie has been added to the movie list:");
+        System.out.println(newMovie.getTitle() + "\n");
 
 
     }
@@ -168,50 +173,22 @@ public class MovieCollection {
      * members in the descending order of the frequency
      */
     public static void displayTop10() {
-        System.out.println("#####DEBUG: displayTop10(): " );
-
-        QuickSort ob = new QuickSort();
-
-        int[][] arrayToSort = bTree.treeTo2DArray();
-
-        System.out.println("#####DEBUG: displayTop10(): array before sort");
-        for (int[] ints : arrayToSort) {
-            System.out.println(ints[0]);
-            System.out.println(ints[1]);
-
-
-        }
-
+        System.out.println("Top 10 most frequently borrowed movie DVDs");
+        QuickSort quickSort = new QuickSort();
+        int[][] arrayToSort = bTree.splitArray();
         int n = arrayToSort.length;
+        quickSort.sort(arrayToSort, 0, n-1);
 
-        ob.sort(arrayToSort, 0, n-1);
-
-        System.out.println("#####DEBUG: displayTop10(): Printing the sorted array");
-
-        for (int i=0; i<n; ++i){
-            System.out.println(arrayToSort[i][1]+" ");
-            System.out.println(arrayToSort[i][0]);
-
-        }
-
-
-//        if(n<10){
-
-
+        if(n<10){
             for(int i = n; i > 0; i-- ){
                 System.out.println(bTree.refArr[arrayToSort[i - 1][0]][1]);
 
             }
-
-
-//        for(int i = 10; i > 0; i--){
-//
-//        }
-//
-        System.out.println();
-
-
-
+        }else{
+            for(int i = 0; i < 10; i++){
+                System.out.println(bTree.refArr[arrayToSort[( n - i ) - 1][0]][1]);
+            }
+        }
     }
 
     /**
@@ -230,8 +207,12 @@ public class MovieCollection {
 
         if(bTree.SearchTitle(input) != null){
             bTree.removeNode(input);
+            System.out.println("The following movie has been removed from the collection: ");
+            System.out.println(input);
+
+
         }else{
-            System.out.println("Error! Cannot remove movie. " + input + "  doesn't exist.");
+            System.out.println("Cannot remove movie. Movie: " + input + ", doesn't exist.");
         }
 
 
@@ -241,8 +222,15 @@ public class MovieCollection {
      * Displays a list of all movies lexicographically
      */
     public static void displayAllMovies() {
+        System.out.println("These are all the movies in the collection: ");
         // InOrderTraversal
         bTree.inOrderTraversal();
+        if(bTree.sizeOfTree < 1){
+            System.out.println("There are no movies in the collection");
+
+        }
+        System.out.println("These are all the movies in the collection: ");
+
     }
 
     /**
@@ -390,6 +378,93 @@ public class MovieCollection {
         newMovie3.setCopies(2);
         newMovie3.setTimesRented(100);
         bTree.addNode(newMovie3.getTitle(), newMovie3);
+
+        Movie newMovie4 = new Movie();
+        newMovie4.setTitle("The Cameras Shutter");
+        newMovie4.setStarring("Liam Hemsworth");
+        newMovie4.setDirector("Cam Eria");
+        newMovie4.setGenre(Movie.Genres.SciFi);
+        newMovie4.setClassification(Movie.Classifications.M);
+        newMovie4.setDuration(134);
+        newMovie4.setReleaseDate("1/9/2007");
+        newMovie4.setCopies(12);
+        newMovie4.setTimesRented(101);
+        bTree.addNode(newMovie4.getTitle(), newMovie4);
+
+        Movie newMovie5 = new Movie();
+        newMovie5.setTitle("Sinbads rescue");
+        newMovie5.setStarring("\t\n" +
+                "Nathanial Greiger,\n");
+        newMovie5.setDirector("\tThomas Chaplin");
+        newMovie5.setGenre(Movie.Genres.SciFi);
+        newMovie5.setClassification(Movie.Classifications.M);
+        newMovie5.setDuration(200);
+        newMovie5.setReleaseDate("1/9/2016");
+        newMovie5.setCopies(2);
+        newMovie5.setTimesRented(299);
+        bTree.addNode(newMovie5.getTitle(), newMovie5);
+
+        Movie newMovie6 = new Movie();
+        newMovie6.setTitle("The Overhaul at Camaroon");
+        newMovie6.setStarring("Antonito Montana");
+        newMovie6.setDirector("Roberto Alto");
+        newMovie6.setGenre(Movie.Genres.Thriller);
+        newMovie6.setClassification(Movie.Classifications.MA);
+        newMovie6.setDuration(190);
+        newMovie6.setReleaseDate("19/5/2019");
+        newMovie6.setCopies(45);
+        newMovie6.setTimesRented(87);
+        bTree.addNode(newMovie6.getTitle(), newMovie6);
+
+        Movie newMovie7 = new Movie();
+        newMovie7.setTitle("Movie 7");
+        newMovie7.setStarring("7 actors");
+        newMovie7.setDirector("Director 7");
+        newMovie7.setGenre(Movie.Genres.Thriller);
+        newMovie7.setClassification(Movie.Classifications.MA);
+        newMovie7.setDuration(109);
+        newMovie7.setReleaseDate("7/7/2019");
+        newMovie7.setCopies(7);
+        newMovie7.setTimesRented(7000);
+        bTree.addNode(newMovie7.getTitle(), newMovie7);
+
+        Movie newMovie8 = new Movie();
+        newMovie8.setTitle("Movie 8");
+        newMovie8.setStarring("8 Actors");
+        newMovie8.setDirector("Director 8");
+        newMovie8.setGenre(Movie.Genres.SciFi);
+        newMovie8.setClassification(Movie.Classifications.M);
+        newMovie8.setDuration(88);
+        newMovie8.setReleaseDate("8/8/2008");
+        newMovie8.setCopies(8);
+        newMovie8.setTimesRented(88);
+        bTree.addNode(newMovie8.getTitle(), newMovie8);
+
+//        Movie newMovie9 = new Movie();
+//        newMovie9.setTitle("Movie 9");
+//        newMovie9.setStarring("9 Actors");
+//        newMovie9.setDirector("Director 9");
+//        newMovie9.setGenre(Movie.Genres.SciFi);
+//        newMovie9.setClassification(Movie.Classifications.M);
+//        newMovie9.setDuration(99);
+//        newMovie9.setReleaseDate("0/9/2019");
+//        newMovie9.setCopies(9);
+//        newMovie9.setTimesRented(0);
+//        bTree.addNode(newMovie9.getTitle(), newMovie9);
+//
+//        Movie newMovie10 = new Movie();
+//        newMovie10.setTitle("Movie 10");
+//        newMovie10.setStarring("10 Actors");
+//        newMovie10.setDirector("Director 10");
+//        newMovie10.setGenre(Movie.Genres.Thriller);
+//        newMovie10.setClassification(Movie.Classifications.MA);
+//        newMovie10.setDuration(190);
+//        newMovie10.setReleaseDate("10/10/2019");
+//        newMovie10.setCopies(10);
+//        newMovie10.setTimesRented(10);
+//        bTree.addNode(newMovie10.getTitle(), newMovie10);
+
+
 
 
 

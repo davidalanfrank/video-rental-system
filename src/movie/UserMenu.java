@@ -6,7 +6,7 @@ public class UserMenu {
      */
 
     public static void displayWelcomeMenu(){
-        String welcomeMenu = "Welcome to the Community Library\n" +
+        String welcomeMenu = "\nWelcome to the Community Library\n" +
                 "===========Main Menu===========\n" +
                 "1. Staff Login\n" +
                 "2. Member Login\n" +

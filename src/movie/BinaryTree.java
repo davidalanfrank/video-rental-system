@@ -6,6 +6,8 @@ public class BinaryTree {
 
     Node root;
 
+
+
     public String[][] getRefArr() {
         return refArr;
     }
@@ -15,6 +17,11 @@ public class BinaryTree {
     }
 
     String[][] refArr;
+    String[][] titleAndTimesRented;
+
+    int sizeOfTree = 0;
+    int count;
+
 
     HashMap<String,String> map = new HashMap<>();
 
@@ -54,6 +61,7 @@ public class BinaryTree {
                 }
             }
         }
+
     }
 
     // there are three cases to consider:
@@ -123,9 +131,10 @@ public class BinaryTree {
     }
 
     public void inOrderTraversal(){
-        System.out.println("InOrder: ");
+
+
         inOrderTraversal(root);
-        System.out.println("End");
+
 
 
     }
@@ -134,65 +143,74 @@ public class BinaryTree {
 
 
         if(focusNode != null ){
+
             inOrderTraversal(focusNode.leftChild);
-            System.out.println(focusNode);
+            System.out.println(focusNode.title);
             inOrderTraversal(focusNode.rightChild);
 
         }
     }
 
     public void arbitraryTraverse(){
-        System.out.println("arbitraryTraverse()");
+        // Size of the tree
+        count = 0;
+        preOrderTraversal();
+        titleAndTimesRented = new String[sizeOfTree][2];
         arbitraryTraverse(root);
-
     }
     // Prints "In order", top down ??
     private void arbitraryTraverse(Node focusNode){
 
+
+        String[] newCell = new String[2];
+
         if(focusNode != null ){
+
             arbitraryTraverse(focusNode.leftChild);
-            System.out.println("arbitraryTraverse() focusNode.title + Integer.toString(focusNode.movie.getTimesRented()");
-            this.map.put(focusNode.title, Integer.toString(focusNode.movie.getTimesRented()));
-            System.out.println(focusNode.title + focusNode.movie.getTimesRented());
+            newCell[0] = focusNode.title;
+            System.out.println(newCell[0]);
+            newCell[1] = Integer.toString(focusNode.movie.getTimesRented());
+            System.out.println(newCell[1]);
+            titleAndTimesRented[count++] = newCell;
             arbitraryTraverse(focusNode.rightChild);
 
+
         }
+
+
     }
 
 
 
-    public int[][] treeTo2DArray(){
-        System.out.println("treeTo2DArray()");
+    public int[][] splitArray(){
 
         arbitraryTraverse();
-
-        refArr = new String[map.size()][2];
-        int[][] arrayToSort = new int[map.size()][2];
-
-        int index = 0;
-        System.out.println("printing values of map.");
-        for (String s : map.keySet()) {
-
+        int n = titleAndTimesRented.length;
+        refArr = new String[n][2];
+        int[][] arrayToSort = new int[n][2];
+        int i = 0;
+        while(i < n  ){
             // using the index as the id
-            arrayToSort[index][0]=index;
-            refArr[index][0] = Integer.toString(index);
-
-            arrayToSort[index][1]= Integer.parseInt(map.get(s));
-
-            refArr[index][1] = s;
-
-
-            index++;
-
-
+            arrayToSort[i][0]=i;
+            refArr[i][0] = Integer.toString(i);
+            arrayToSort[i][1]= Integer.parseInt(titleAndTimesRented[i][1]);
+            refArr[i][1] = titleAndTimesRented[i][0];
+            i++;
         }
+
+
         return arrayToSort;
 
     }
 
+    public void preOrderTraversal(){
+        sizeOfTree = 0;
+        preOrderTraversal(root);
+
+    }
     private void preOrderTraversal(Node focusNode){
         if(focusNode != null ){
-
+            sizeOfTree++;
             System.out.println(focusNode);
 
             preOrderTraversal(focusNode.leftChild);
@@ -233,7 +251,7 @@ public class BinaryTree {
             }
         }
         else{
-            System.out.println("This movie doesn't exists");
+            System.out.println("Search Error!");
             return null;
         }
     }
@@ -334,7 +352,7 @@ public class BinaryTree {
         tree.arbitraryTraverse();
 
 
-        int[][] arr = tree.treeTo2DArray();
+        int[][] arr = tree.splitArray();
         int n = arr.length;
         System.out.println("#####DEBUG: main(): Printing array " );
         for (int i=0; i<n; ++i)

@@ -22,8 +22,8 @@ public class MemberCollection {
      * of the class Member). The class MemberCollection must use an
      * !!!array!!! as a class member to store the members.
      */
-    private static Member[] members = new Member[20];
-    private static int totalMembers;
+    private static Member[] members = new Member[1];
+    private static int totalMembers = 0;
 
     public static int getIndexOfLoggedInUser() {
         return indexOfLoggedInUser;
@@ -75,36 +75,58 @@ public class MemberCollection {
         input = reader.readLine();
 
         newMember.setAddress(input);
-        System.out.println("Enter password (4 digits):");
+        System.out.println("Enter password (Must be 4 digits):");
+
         input = reader.readLine();
 
-        newMember.setPassword(Integer.parseInt(input));
+        try{
+            if(input.length()==4 && input.matches("^\\d+$")){
 
-        members[totalMembers++] = newMember;
+                newMember.setPassword(Integer.parseInt(input));
 
-        members = sortMembersByUsername(members);
 
-         System.out.println("Printing sorted members");
-        for (Member member : members) {
-            System.out.println(member.getUsername());
+
+            }else{
+
+                throw new NumberFormatException();
+
+            }
+
+
+
+            Member[] newMembers = new Member[totalMembers + 1];
+
+            for(int i = 0; i < members.length; i++)
+            {
+                newMembers[i] = members[i];
+            }
+
+            newMembers[totalMembers++] = newMember;
+
+            members = sortMembersByUsername(newMembers);
+
+
+            System.out.println( "User: " +newMember.getFName() + " " + newMember.getLName() + ", has been added!");
+        }catch(NumberFormatException e){
+            System.out.println("Error! Password must be a 4 digit combination");
 
         }
 
-        System.out.println(newMember.getFName() + " " + newMember.getLName() + " has been added");
-        for (int i = 0; i < totalMembers; i++){
-            System.out.println(members[i].getLName());
-        }
+
 
     }
 
     private static Member[] sortMembersByUsername( Member[] members ){
 
-        for (int n = 0; n < totalMembers; n++) {
-            System.out.println(members[n].getUsername());
-          }
+//        for (int n = 0; n < totalMembers; n++) {
+//            System.out.println(members[n].getUsername());
+//          }
 
 
-        Member[] sortedMembers = members;
+        Member[] sortedMembers = new Member[totalMembers + 1];
+        sortedMembers = members;
+
+
         int count=0;
         for(int i = 0; i < totalMembers - 1; ++i) {
 
@@ -288,7 +310,7 @@ public class MemberCollection {
                 members[indexOfUsername].setLoggedIn(true);
                 indexOfLoggedInUser = indexOfUsername;
 
-                System.out.println("User: " + members[indexOfLoggedInUser].getUsername() + "has successfully logged in");
+                System.out.println("User: " + members[indexOfLoggedInUser].getUsername() + ", has successfully logged in");
                 return true;
             }else{
                 System.out.println("Wrong Password");

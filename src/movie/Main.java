@@ -11,7 +11,7 @@ public class Main {
 
 
     /**
-     * A class that will handle all of the console menu
+     * A class that will handle all of t1he console menu
      *
      * The software application should have a staff menu that allows the staff to do the following:
      *  Add DVDs of a new movie to the software application
@@ -29,19 +29,17 @@ public class Main {
         boolean memberIsLoggedIn;
 
         final String staffUsername = "staff";
-        final int staffPassword= 1234;
+        final String staffPassword= "today123";
 
         MovieCollection allMovies = new MovieCollection();
 
         MemberCollection allMembers = new MemberCollection();
-
-        allMembers.populateListWithTestMembers();
-
-        allMovies.populateBinaryTreeWithMoviesTitles();
+//
+//        allMembers.populateListWithTestMembers();
+//
+//        allMovies.populateBinaryTreeWithMoviesTitles();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-
 
        int nextInput=1000;
 
@@ -75,17 +73,17 @@ public class Main {
 
                 givenUsername = input;
 
-                //TODO Handling for only input of 4 ints
                 System.out.println("Enter password");
 
                 input = reader.readLine();
 
                 givenPassword = input;
 
+
                 // Compare the given username and password with the Staff login credentials
-                if(( givenUsername.compareTo(staffUsername) == 0 ) && (Integer.parseInt(givenPassword) == staffPassword ))
+                if(( givenUsername.compareTo(staffUsername) == 0 ) && (givenPassword.compareTo(staffPassword) == 0))
                 {
-                    System.out.println("Staff member has Logging in. Welcome!");
+                    System.out.println("\nStaff member login successful. Welcome!");
                     staffIsLoggedIn = true;
                 }
                 else{
@@ -154,7 +152,18 @@ public class Main {
 
                 givenPassword = input;
 
-                memberIsLoggedIn = allMembers.memberLogin(givenUsername, givenPassword);
+
+                if(input.length()==4 && input.matches("^\\d+$")){
+
+                    memberIsLoggedIn = allMembers.memberLogin(givenUsername, givenPassword);
+
+
+                }else{
+                    System.out.println("Error! Password must be a 4 digit combination");
+                    memberIsLoggedIn = false;
+                }
+
+
 
                 if ( memberIsLoggedIn){
                     /* !!! We're inside of Member !!! */
@@ -177,16 +186,22 @@ public class Main {
                                 break;
                             case 1:
                                 MovieCollection.displayAllMovies();
+                                break;
                             case 2:
                                 MovieCollection.borrowMovie();
+                                break;
                             case 3:
                                 MovieCollection.returnMovie();
+                                break;
                             case 4:
                                 MovieCollection.currentlyBorrowed();
+                                break;
                             case 5:
                                 MovieCollection.displayTop10();
+                                break;
                             default:
                                 System.out.println("Default Invalid input");
+                                break;
 
                         }
 
@@ -201,11 +216,9 @@ public class Main {
 
             }
 
-
         }
 
-        System.out.println("Thank you for visiting the Community Library. Bye ^__^");
-        
+        System.out.println("Thank you for visiting the Community Library. See you next time (~￣▽￣)~");
 
     }
 }

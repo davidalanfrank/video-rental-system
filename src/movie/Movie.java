@@ -2,20 +2,9 @@ package movie;
 
 public class Movie {
 
-
     /**
-     * This class represents a model a Movie DVD title. The same title may have more
-     * than one copy.
-     * The information about a movie
-     * Fields: title, starring, director, duration, genre, classification, and release date
-     *
-     * The genre of
-     * a movie may be Drama, Adventure, Family, Action, Sci-Fi, Comedy, Animated, Thriller, or
-     * Other. A movie is classified as General (G), Parental Guidance (PG), Mature (M15+), or
-     * Mature Accompanied (MA15+). The community library may have multiple DVDs of the
-     * same movie.
+     * This class represents a model a Movie DVD title
      */
-
     private String title;
     private String starring;
     private String director;
@@ -27,19 +16,36 @@ public class Movie {
     private int copiesAvailable;
     private int timesRented;
 
+    /**
+     * A constructor for a movie object.
+     * @return void
+     */
+    public Movie(){
+
+    }
+
+    /**
+     * Increments the instance var every time a movie is borrowed
+     */
     public void incrementTimesRented() {
         this.timesRented++;
     }
 
+    /**
+     * Increments the instance var for available copies
+     */
     public void incrementCopiesAvailable(){
         if (copiesAvailable > copies){
             System.out.println("Oops, You've tried to return an non existent copy");
         }else{
-
             this.copiesAvailable++;
         }
 
     }
+
+    /**
+     * decrements the instance var for available copies
+     */
     public void decrementCopiesAvailable(){
         if (copiesAvailable < 1){
             System.out.println("Oops, there is no more copies to lease");
@@ -50,16 +56,22 @@ public class Movie {
 
     }
 
+    /**
+     * Getter for copies available
+     */
     public int getCopiesAvailable(){
         return this.copiesAvailable;
     }
 
+    // Helper for handling Ratings
     enum Classifications {
         G,
         PG,
         M,
         MA
     }
+
+    // Helper for handling genres
     enum Genres {
         Drama,
         Adventure,
@@ -72,68 +84,36 @@ public class Movie {
     }
 
     /**
-     * A constructor for a movie object.
-     * @return void
-     */
-    public Movie(){
-
-    }
-    public String getStarring() {
-        return starring;
+     * !! Only used when staff adds a movie to the movie list
+     * */
+    public void setCopies(int copies) {
+        this.copies = copies;
+        this.copiesAvailable = copies;
     }
 
+    // Getters and setters for instance variables
     public void setStarring(String starring) {
         this.starring = starring;
-    }
-
-    public String getDirector() {
-        return director;
     }
 
     public void setDirector(String director) {
         this.director = director;
     }
 
-    public Genres getGenre() {
-        return genre;
-    }
-
     public void setGenre(Genres genre) {
         this.genre = genre;
-    }
-
-    public Classifications getClassification() {
-        return classification;
     }
 
     public void setClassification(Classifications classification) {
         this.classification = classification;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public int getCopies() {
-        return copies;
-    }
-    /**
-     * Only used when staff adds a movie to the movie list*/
-    public void setCopies(int copies) {
-        this.copies = copies;
-        this.copiesAvailable = copies;
     }
 
     public int getTimesRented() {

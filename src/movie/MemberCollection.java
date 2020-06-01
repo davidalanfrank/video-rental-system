@@ -6,31 +6,24 @@ import java.io.InputStreamReader;
 
 
 public class MemberCollection {
-
-
-
     /**
-     * Design and implement a class MemberCollection to represent a
-     * collection of registered members (a collection of the objects
-     * of the class Member). The class MemberCollection must use an
-     * !!!array!!! as a class member to store the members.
+     * The class handles all operations to do with the organisation and manipulation
+     * of members in the application
+     * @author David Alan Frank Webster
      */
 
-
+    // An array to store the members
     private static Member[] members = new Member[1];
     private static int totalMembers = 0;
     private static int indexOfLoggedInUser;
 
     /**
-     * Constructs and adds a new memeber to the Member collection
+     * Constructs and adds a new member to the Member collection
      */
     public static void addMember() throws IOException {
 
-
-        /* The new member to be added to the array */
         Member newMember = new Member();
 
-        /* Create a buffered reader for user input */
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
@@ -55,44 +48,42 @@ public class MemberCollection {
         input = reader.readLine();
 
         try{
+            // Handles the input of 4 numeric values
             if(input.length()==4 && input.matches("^\\d+$")){
-
                 newMember.setPassword(Integer.parseInt(input));
-
-
-
             }else{
-
                 throw new NumberFormatException();
-
             }
 
-
-
+            // Temporary storage with space for a new member
             Member[] newMembers = new Member[totalMembers + 1];
 
+            // Copy members
             for(int i = 0; i < members.length; i++)
             {
                 newMembers[i] = members[i];
             }
 
+            // Add the new member into the temporary storage
             newMembers[totalMembers++] = newMember;
 
+            // Sorts the members lexicographically by username
+            //  and reassigns to members array
             members = sortMembersByUsername(newMembers);
 
-
             System.out.println( "User: " +newMember.getFName() + " " + newMember.getLName() + ", has been added!");
+
         }catch(NumberFormatException e){
             System.out.println("Error! Password must be a 4 digit combination");
 
         }
 
-
-
     }
 
+    /*
+     * This method performs a selection sort of the members by username
+     */
     private static Member[] sortMembersByUsername( Member[] members ){
-
 
         Member[] sortedMembers = new Member[totalMembers + 1];
         sortedMembers = members;
@@ -112,6 +103,7 @@ public class MemberCollection {
         return sortedMembers;
 
     }
+
     /**
      * Prompts the user for input and finds the phone number of that member
      */
@@ -122,17 +114,15 @@ public class MemberCollection {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
-
         System.out.println("Enter members First name:");
         input = reader.readLine();
-
         fName = input;
 
         System.out.println("Enter members Last name:");
         input = reader.readLine();
-
         lName = input;
 
+        //  binaryMemberSearch() returns the index of a given username in the members array
         int indexOfSearchMember = binaryMemberSearch(members, lName+fName);
 
         if(indexOfSearchMember != -1){
@@ -141,8 +131,6 @@ public class MemberCollection {
             System.out.println("Error! Member doesn't exist\n");
         }
 
-
-
     }
 
 
@@ -150,9 +138,8 @@ public class MemberCollection {
      * A helper method that populates the movie list with 1 member
      */
     public static void populateListWithTestMembers() throws IOException {
-        /* The new member to be added to the array */
+        // The new member to be added to the array
         Member newMember1 = new Member();
-
 
         newMember1.setFName("User");
         newMember1.setLName("Test");
@@ -160,18 +147,16 @@ public class MemberCollection {
         newMember1.setAddress("Shinjuku, 3 Chome−27−4 1 3F");
         newMember1.setPassword(1111);
 
-
         members[0] = newMember1;
         totalMembers++;
-
 
     }
 
     /*
-    A binary search algorithm to find a member given a username
-     @param Member[] members the array of members
-     @param String username the user name of a potentially registered member
-     @return int the index of the member
+     * A binary search algorithm to find a member given a username
+     * @param Member[] members the array of members
+     * @param String username the user name of a potentially registered member
+     * @return int the index of the member
      */
     private int binaryMemberSearch(Member[] members, String username){
         int l = 0;
@@ -189,12 +174,16 @@ public class MemberCollection {
             }else{
                 r = middle - 1;
             }
-
         }
         return -1;
     }
 
-
+    /**
+     * Handles the logging in of a registered member.
+     * @params givenUsername the input username
+     * @params givenPassword the input of a given password
+     * @return true if login successful, else false
+     */
     public boolean memberLogin(String givenUsername, String givenPassword) {
 
         int indexOfUsername = binaryMemberSearch(members, givenUsername);
@@ -205,7 +194,6 @@ public class MemberCollection {
         }else{
             if( members[indexOfUsername].getPassword() ==  Integer.parseInt(givenPassword) ){
 
-//                members[indexOfUsername].setLoggedIn(true);
                 indexOfLoggedInUser = indexOfUsername;
 
                 System.out.println("User: " + members[indexOfLoggedInUser].getUsername() + ", has successfully logged in");
@@ -220,9 +208,19 @@ public class MemberCollection {
 
     }
 
+    /**
+     * Getter method for the members[] instance variable
+     * @return Member[] of all registered members
+     */
     public static Member[] getMembers() {
         return members;
     }
+
+
+    /**
+     * Getter for the index of the currently logged in user
+     * @return int of index
+     */
     public static int getIndexOfLoggedInUser() {
         return indexOfLoggedInUser;
     }

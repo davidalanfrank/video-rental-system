@@ -11,17 +11,13 @@ public class Main {
 
 
     /**
-     * A class that will handle all of t1he console menu
-     *
-     * The software application should have a staff menu that allows the staff to do the following:
-     *  Add DVDs of a new movie to the software application
-     *  Remove a movie DVD from the software application
-     *  Register a member with the software application
-     *  Find a member’s contact phone number, given the member’s full name
+     * The main entry point for the application.
+     * This class runs the main "event loop".
+     * This class handles a users navigation through menu items a
+     * @author David Alan Frank Webster
      */
     public static void main(String[] args) throws IOException {
 
-        // Username and password from the user
         String givenUsername;
         String givenPassword;
 
@@ -32,55 +28,47 @@ public class Main {
         final String staffPassword= "today123";
 
         MovieCollection allMovies = new MovieCollection();
-
         MemberCollection allMembers = new MemberCollection();
-//
-        allMembers.populateListWithTestMembers();
-//
-        allMovies.populateBinaryTreeWithMoviesTitles();
+
+        ////////// These two methods were used for testing ///////
+        //  allMembers.populateListWithTestMembers();
+        //  allMovies.populateBinaryTreeWithMoviesTitles();
+        //////////////////////////////////////////////////////////
+
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
        int nextInput=1000;
 
-
+       // The main "Event Loop" for the console application
         while(true){
 
             displayWelcomeMenu();
 
             String input;
-
             input = reader.readLine();
-
             try{
-
                 nextInput = Integer.parseInt(input);
 
             }catch (NumberFormatException e)
             {
                 System.out.println("Invalid input");
             }
-
             if(nextInput == 0 ){
                 break;
             }
 
             if( nextInput == 1 ){
-
+                // Staff Login
                 System.out.println("Enter username");
-
                 input = reader.readLine();
-
                 givenUsername = input;
 
                 System.out.println("Enter password");
-
                 input = reader.readLine();
-
                 givenPassword = input;
 
-
-                // Compare the given username and password with the Staff login credentials
+                // Compares the given username and password with the Staff login credentials
                 if(( givenUsername.compareTo(staffUsername) == 0 ) && (givenPassword.compareTo(staffPassword) == 0))
                 {
                     System.out.println("\nStaff member login successful. Welcome!");
@@ -93,7 +81,7 @@ public class Main {
 
                 if(staffIsLoggedIn){
 
-                    /* !!! We're inside of the Staff !!! */
+                    // Staff is logged in
                     while(nextInput != 0 && staffIsLoggedIn )
                     {
                         displayStaffMenu();
@@ -139,25 +127,20 @@ public class Main {
 
 
             if( nextInput == 2){
-                // Staff member login
 
+                // Member login
                 System.out.println("Enter username");
-
                 input = reader.readLine();
-
                 givenUsername = input;
 
                 System.out.println("Enter password");
-
                 input = reader.readLine();
-
                 givenPassword = input;
 
-
+                // Handling 4 digit password input
                 if(input.length()==4 && input.matches("^\\d+$")){
 
                     memberIsLoggedIn = allMembers.memberLogin(givenUsername, givenPassword);
-
 
                 }else{
                     System.out.println("Error! Password must be a 4 digit combination");
@@ -167,7 +150,8 @@ public class Main {
 
 
                 if ( memberIsLoggedIn){
-                    /* !!! We're inside of Member !!! */
+
+                    // Member is logged in
                     while(nextInput != 0 && memberIsLoggedIn)
                     {
                         displayMemberMenu();

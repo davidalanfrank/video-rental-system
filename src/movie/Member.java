@@ -4,20 +4,8 @@ import java.util.ArrayList;
 
 public class Member {
     /**
-     * Design and implement a class Member to model a
-     * library member. In this software application, each registered
-     * member is represented by an object of the class Member.
-     *
-     * Fields:
-     * their full name, residential address, and a
-     * contact phone number are recorded in the system.
-     *
-     * The system also keeps the information
-     * about the movie DVDs that are currently
-     * being borrowed by each of the registered members
-     *
-     *  A registered member can borrow up to 10
-     * movies at any time.
+     * This class models a member of the library
+     * @author David Alan Frank Webster
      */
     private String username;
     private String fName;
@@ -35,7 +23,6 @@ public class Member {
 
 
     }
-
     public String getFName() {
         return fName;
     }
@@ -48,22 +35,16 @@ public class Member {
         return lName;
     }
 
-    /*
-    * Sets a lastname and then uses the lName and first name to set the username*/
-
+    /**
+     * This method sets a last name of a member
+     * and then sets a username using a lastname
+     * and firstname.
+     */
     public void setLName(String lName) {
-
         this.lName = lName;
-
         setUsername(this.lName + this.fName);
 
-
     }
-
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
     }
@@ -84,7 +65,6 @@ public class Member {
         this.password = password;
     }
 
-
     public ArrayList getBorrowedMovies() {
 
         return borrowedMovies;
@@ -97,7 +77,6 @@ public class Member {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }

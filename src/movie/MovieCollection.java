@@ -258,7 +258,7 @@ public class MovieCollection {
      */
     public static void borrowMovie() throws IOException {
 
-        if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().size() > 10){
+        if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().size() >= 10){
             System.out.println("Sorry, you are already borrowing 10 movies which is a members limit. \n\tPlease return some movies before borrowing again.");
 
         }else{
@@ -268,12 +268,10 @@ public class MovieCollection {
             System.out.println("Enter movie title: ");
 
             input = reader.readLine();
-            System.out.println("input");
-            System.out.println(input);
+
             try{
                 String movieTitle = bTree.SearchTitle(input).getTitle();
-                System.out.println("movieTitle");
-                System.out.println(movieTitle);
+
 
                 if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().contains(movieTitle))
                 {
@@ -285,15 +283,10 @@ public class MovieCollection {
                         System.out.println("Movie Borrowed! Enjoy your viewing(s) of " + movieTitle  );
                         MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().add(movieTitle);
 
-                        System.out.println( "MemberCollection.getMembers().length" );
-                        System.out.println( MemberCollection.getMembers().length );
-                        System.out.println( "MemberCollection.getIndexOfLoggedInUser()" );
-                        System.out.println( MemberCollection.getIndexOfLoggedInUser() );
-                        System.out.println( "Printing all borrowed movies" );
-
-                        for (Object o :  MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies()) {
-                            System.out.println( o );
-                        }
+//
+//                        for (Object o :  MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies()) {
+//                            System.out.println( o );
+//                        }
                     }
                 }
 

@@ -34,7 +34,7 @@ public class UserMenu {
                 "1. Display all movies\n" +
                 "2. Borrow a movie DVD\n" +
                 "3. Return a movie DVD\n" +
-                "4. List current borrowed movie DVDs\n" +
+                "4. List currently borrowed movie DVDs\n" +
                 "5. Display top 10 most popular movies\n" +
                 "0. Return to main menu\n" +
                 "===============================\n" +

@@ -23,44 +23,71 @@ public class BinaryTree {
     int count;
 
 
-    HashMap<String,String> map = new HashMap<>();
 
-    public void addNode(String title, Movie movie ){
+    public void addNode(Movie movie){
 
-        Node newNode = new Node(title, movie);
+        if(root == null){
+            root = new Node(movie.getTitle(), movie);
+        }else{
+            addNode(movie, root);
+        }
+    }
+
+    private void addNode(Movie givenMovie, Node focusNode ){
+
+
+
+        if(givenMovie.getTitle().compareTo(focusNode.title) < 0){
+            if(focusNode.leftChild == null){
+                focusNode.leftChild = new Node(givenMovie.getTitle(), givenMovie);
+            }else{
+                addNode(givenMovie, focusNode.leftChild);
+            }
+
+        }else{
+            if(focusNode.rightChild==null){
+                focusNode.rightChild = new Node(givenMovie.getTitle(), givenMovie);
+            }else{
+                addNode(givenMovie, focusNode.rightChild);
+            }
+
+        }
 
         // If not root exists, new node becomes the root
-        if(root == null){
-            root = newNode;
-        }else{
-            Node focusNode = root;
-
-            Node parent;
-
-            while(true){
-
-                parent = focusNode;
-
-                if(title.compareTo(focusNode.title) < 0 ){
-
-                    focusNode = focusNode.leftChild;
-
-                    if(focusNode == null){
-                        parent.leftChild = newNode;
-                        return;
-                    }
-
-                }else{
-                    focusNode = focusNode.rightChild;
-
-                    if(focusNode == null ){
-                        parent.rightChild = newNode;
-                        return;
-                    }
-
-                }
-            }
-        }
+//        if(root == null){
+//            root = newNode;
+//        }else{
+//            Node focusNode = root;
+//
+//            Node parent;
+//
+//
+//            while(true){
+//
+//                parent = focusNode;
+//
+//                if(title.compareTo(focusNode.title) < 0 ){
+//
+//                    focusNode = focusNode.leftChild;
+//
+//                    if(focusNode == null){
+//                        System.out.println("Left node added");
+//                        parent.leftChild = newNode;
+//                        return;
+//                    }
+//
+//                }else{
+//                    System.out.println("Right node added");
+//                    focusNode = focusNode.rightChild;
+//
+//                    if(focusNode == null ){
+//                        parent.rightChild = newNode;
+//                        return;
+//                    }
+//
+//                }
+//            }
+//        }
 
     }
 
@@ -141,7 +168,6 @@ public class BinaryTree {
     // Prints "In order", top down ??
      private void inOrderTraversal(Node focusNode){
 
-
         if(focusNode != null ){
 
             inOrderTraversal(focusNode.leftChild);
@@ -168,9 +194,7 @@ public class BinaryTree {
 
             arbitraryTraverse(focusNode.leftChild);
             newCell[0] = focusNode.title;
-            System.out.println(newCell[0]);
             newCell[1] = Integer.toString(focusNode.movie.getTimesRented());
-            System.out.println(newCell[1]);
             titleAndTimesRented[count++] = newCell;
             arbitraryTraverse(focusNode.rightChild);
 
@@ -211,7 +235,7 @@ public class BinaryTree {
     private void preOrderTraversal(Node focusNode){
         if(focusNode != null ){
             sizeOfTree++;
-            System.out.println(focusNode);
+//            System.out.println(focusNode);
 
             preOrderTraversal(focusNode.leftChild);
 
@@ -232,23 +256,27 @@ public class BinaryTree {
 
     ///// SEARCH AND RETURN THE MOVIE /////
     public Movie SearchTitle(String title){
-        Node focusNode = root;
 
         return SearchTitle(title, root);
     }
 
-    private Movie SearchTitle(String title, Node root){
-        Node focusNode = root;
-        if ( root != null ){
-            if( title.compareTo(focusNode.title) == 0 ){
-                return focusNode.movie;
-            }else{
-                if(title.compareTo(focusNode.title) < 0){
-                    return SearchTitle(title, root.leftChild);
-                }else{
-                    return SearchTitle(title, root.rightChild);
-                }
+    private Movie SearchTitle(String title, Node r){
+//        System.out.println("In new Node. Title is :");
+//        System.out.println(title);
+
+        if ( r != null )
+        {
+            if( title.compareTo(r.movie.getTitle()) == 0 ){
+
+                return r.movie;
             }
+            else if (title.compareTo(r.movie.getTitle()) < 0){
+
+                return SearchTitle(title, r.leftChild);
+
+            }else{
+                return SearchTitle(title, r.rightChild);
+             }
         }
         else{
             System.out.println("Search Error!");
@@ -258,55 +286,15 @@ public class BinaryTree {
 
 
 
-//    public boolean SearchTitle(String title){
-//        Node focusNode = root;
-//
-//        return SearchTitle(title, root);
-//    }
-//
-//    private boolean SearchTitle(String title, Node root){
-//        Node focusNode = root;
-//        if ( root != null ){
-//            if( title.compareTo(focusNode.title) == 0 ){
-//                return true;
-//            }else{
-//                if(title.compareTo(focusNode.title) < 0){
-//                    return SearchTitle(title, root.leftChild);
-//                }else{
-//                    return SearchTitle(title, root.rightChild);
-//                }
-//            }
-//        }
-//        else{
-//            return false;
-//        }
-//
-//    }
-//    public Node findNode(int key){
-//        Node focusNode = root;
-//
-//        while(focusNode.key != key){
-//            if(key < focusNode.key){
-//                focusNode = focusNode.leftChild;
-//            }else{
-//                focusNode = focusNode.rightChild;
-//            }
-//            if(focusNode == null){
-//                return null;
-//
-//            }
-//        }
-//        return focusNode;
-//    }
+
+
     public static void main(String[] args){
 
         BinaryTree tree = new BinaryTree();
 
 
-        tree = new BinaryTree();
-
         Movie newMovie1 = new Movie();
-        newMovie1.setTitle("Evangelion: 1.0 You Are (Not) Alone");
+        newMovie1.setTitle("Movie 1");
         newMovie1.setStarring("Megumi Ogata, Megumi Hayashibara");
         newMovie1.setDirector("Hideaki Anno");
         newMovie1.setGenre(Movie.Genres.SciFi);
@@ -316,7 +304,7 @@ public class BinaryTree {
         newMovie1.setCopies(3);
         newMovie1.setTimesRented(30);
 
-        tree.addNode(newMovie1.getTitle(), newMovie1);
+        tree.addNode(newMovie1);
 
         Movie newMovie2 = new Movie();
         newMovie2.setTitle("Arrival");
@@ -333,7 +321,7 @@ public class BinaryTree {
         newMovie2.setReleaseDate("1/9/2016");
         newMovie2.setCopies(4);
         newMovie2.setTimesRented(28);
-        tree.addNode(newMovie2.getTitle(), newMovie2);
+        tree.addNode(newMovie2);
 
         Movie newMovie3 = new Movie();
         newMovie3.setTitle("The Lighthouse");
@@ -347,17 +335,62 @@ public class BinaryTree {
         newMovie3.setReleaseDate("19/5/2019");
         newMovie3.setCopies(2);
         newMovie3.setTimesRented(3);
-        tree.addNode(newMovie3.getTitle(), newMovie3);
+        tree.addNode(newMovie3);
 
-        tree.arbitraryTraverse();
+        Movie newMovie4= new Movie();
+        newMovie4.setTitle("Movie 9");
+        newMovie4.setStarring("9 Actors");
+        newMovie4.setDirector("Director 9");
+        newMovie4.setGenre(Movie.Genres.SciFi);
+        newMovie4.setClassification(Movie.Classifications.M);
+        newMovie4.setDuration(99);
+        newMovie4.setReleaseDate("0/9/2019");
+        newMovie4.setCopies(9);
+        newMovie4.setTimesRented(0);
+        tree.addNode( newMovie4);
+
+        Movie newMovie5 = new Movie();
+        newMovie5.setTitle("Bee Movie");
+        newMovie5.setStarring("10 Actors");
+        newMovie5.setDirector("Director 10");
+        newMovie5.setGenre(Movie.Genres.Thriller);
+        newMovie5.setClassification(Movie.Classifications.MA);
+        newMovie5.setDuration(190);
+        newMovie5.setReleaseDate("10/10/2019");
+        newMovie5.setCopies(10);
+        newMovie5.setTimesRented(10);
+        tree.addNode(newMovie5);
+
+//
+        Movie newMovie6 = new Movie();
+//        newMovie6.setTitle("Movie 13");
+//        newMovie6.setStarring("11 Actors");
+//        newMovie6.setDirector("Director 10");
+//        newMovie6.setGenre(Movie.Genres.Thriller);
+//        newMovie6.setClassification(Movie.Classifications.MA);
+//        newMovie6.setDuration(190);
+//        newMovie6.setReleaseDate("10/10/2019");
+//        newMovie6.setCopies(10);
+//        newMovie6.setTimesRented(11);
+//        tree.addNode(newMovie6);
+
+//        tree.arbitraryTraverse();
+//        tree.inOrderTraversal();
+//        System.out.println("compareToTEST");
+//        System.out.println("Arrival".compareTo("Movie"));
+//        System.out.println("Movie".compareTo("Arrival"));
+//        System.out.println("tree.SearchTitle(\"Bee Movie\")");
+//
+//        System.out.println( tree.SearchTitle("Bee Movie").getTitle());
+//        int[][] arr = tree.splitArray();
+//        int n = arr.length;
+//        System.out.println("#####DEBUG: main(): Printing array " );
+//        for (int i=0; i<n; ++i)
+//            System.out.print(arr[i][1]+" ");
+//        System.out.println();
 
 
-        int[][] arr = tree.splitArray();
-        int n = arr.length;
-        System.out.println("#####DEBUG: main(): Printing array " );
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i][1]+" ");
-        System.out.println();
+        // Fix the binary tree
 
 
     }

@@ -1,20 +1,13 @@
 package movie;
 
-import javax.swing.plaf.metal.MetalMenuBarUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 
 public class MemberCollection {
 
-    public static Member[] getMembers() {
-        return members;
-    }
 
-    public static void setMembers(Member[] members) {
-        MemberCollection.members = members;
-    }
 
     /**
      * Design and implement a class MemberCollection to represent a
@@ -22,29 +15,11 @@ public class MemberCollection {
      * of the class Member). The class MemberCollection must use an
      * !!!array!!! as a class member to store the members.
      */
+
+
     private static Member[] members = new Member[1];
     private static int totalMembers = 0;
-
-    public static int getIndexOfLoggedInUser() {
-        return indexOfLoggedInUser;
-    }
-
-    public static void setIndexOfLoggedInUser(int indexOfLoggedInUser) {
-        MemberCollection.indexOfLoggedInUser = indexOfLoggedInUser;
-    }
-
     private static int indexOfLoggedInUser;
-
-
-    public static void main( String[] args)
-    {
-        populateListWithTestMembers();
-
-    }
-
-    public MemberCollection() {
-
-    }
 
     /**
      * Constructs and adds a new memeber to the Member collection
@@ -118,18 +93,12 @@ public class MemberCollection {
 
     private static Member[] sortMembersByUsername( Member[] members ){
 
-//        for (int n = 0; n < totalMembers; n++) {
-//            System.out.println(members[n].getUsername());
-//          }
-
 
         Member[] sortedMembers = new Member[totalMembers + 1];
         sortedMembers = members;
 
-
         int count=0;
         for(int i = 0; i < totalMembers - 1; ++i) {
-
             for (int j = i + 1; j < totalMembers; ++j) {
                 if (sortedMembers[i].getUsername().compareTo(sortedMembers[j].getUsername()) > 0) {
                     // swap words[i] with words[j[
@@ -150,7 +119,6 @@ public class MemberCollection {
         String fName;
         String lName;
 
-        /* Create a buffered reader for user input */
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
@@ -167,113 +135,43 @@ public class MemberCollection {
 
         int indexOfSearchMember = binaryMemberSearch(members, lName+fName);
 
-        System.out.println(fName + " " + lName + "'s phone number is: " + members[indexOfSearchMember].getPhoneNum());
+        if(indexOfSearchMember != -1){
+            System.out.println(fName + " " + lName + "'s phone number is: " + members[indexOfSearchMember].getPhoneNum());
+        }else{
+            System.out.println("Error! Member doesn't exist\n");
+        }
 
-
-    }
-
-    /**
-     * Marks a movie as borrowed
-     */
-    public static void borrowMovie(){
 
 
     }
-    /**
-     * Marks a movie as returned
-     */
-    public static void returnMovie(){
 
-    }
 
     /**
-     * Lists the movies that are held by a member
+     * A helper method that populates the movie list with 1 member
      */
-    public static void listMoviesBorrowedByMember(){
-
-    }
-
-    /**
-     * A method that populates the movie list with 3 members
-     */
-    public static void populateListWithTestMembers(){
+    public static void populateListWithTestMembers() throws IOException {
         /* The new member to be added to the array */
         Member newMember1 = new Member();
-        Member newMember2 = new Member();
-        Member newMember3 = new Member();
-        Member newMember4 = new Member();
-        Member newMember5 = new Member();
-        Member newMember6 = new Member();
 
 
-        newMember3.setFName("Niander");
-        newMember3.setLName("Wallace");
-        newMember3.setPhoneNum("unreachable");
-        newMember3.setAddress("Off World");
-        newMember3.setPassword(1010);
-
-
-        members[totalMembers++] = newMember3;
-
-        newMember1.setFName("Toshiki");
-        newMember1.setLName("Kadomatsu");
+        newMember1.setFName("User");
+        newMember1.setLName("Test");
         newMember1.setPhoneNum("0120-XXX-XXX");
         newMember1.setAddress("Shinjuku, 3 Chome−27−4 1 3F");
-        newMember1.setPassword(1985);
+        newMember1.setPassword(1111);
 
 
+        members[0] = newMember1;
+        totalMembers++;
 
-        members[totalMembers++] = newMember1;
-
-        newMember2.setFName("Patrick");
-        newMember2.setLName("Bateman");
-        newMember2.setPhoneNum("1800ILUVDorsia");
-        newMember2.setAddress("55 West 81st Street");
-        newMember2.setPassword(6666);
-
-
-        members[totalMembers++] = newMember2;
-
-        newMember4.setFName("Thomas");
-        newMember4.setLName("Anderson");
-        newMember4.setPhoneNum("@theRealNeo");
-        newMember4.setAddress("SomeWhereInTheMatrix");
-        newMember4.setPassword(9999);
-
-
-        members[totalMembers++] = newMember4;
-
-        newMember5.setFName("Levi");
-        newMember5.setLName("Ackerman");
-        newMember5.setPhoneNum("pigeon?");
-        newMember5.setAddress("Wall Maria");
-        newMember5.setPassword(0000);
-
-
-        members[totalMembers++] = newMember5;
-
-        newMember6.setFName("t");
-        newMember6.setLName("");
-        newMember6.setPhoneNum("Abnormal");
-        newMember6.setAddress("Mainland");
-        newMember6.setPassword(1);
-
-        ArrayList<String> testBorrowedMovieList = new ArrayList<>();
-        testBorrowedMovieList.add("Evangelion: 1.0 You Are (Not) Alone");
-        testBorrowedMovieList.add("Arrival");
-
-        newMember6.setBorrowedMovies(testBorrowedMovieList);
-
-        members[totalMembers++] = newMember6;
-
-        members = sortMembersByUsername(members);
 
     }
+
     /*
     A binary search algorithm to find a member given a username
      @param Member[] members the array of members
      @param String username the user name of a potentially registered member
-     @return int the index of the memeber
+     @return int the index of the member
      */
     private int binaryMemberSearch(Member[] members, String username){
         int l = 0;
@@ -307,7 +205,7 @@ public class MemberCollection {
         }else{
             if( members[indexOfUsername].getPassword() ==  Integer.parseInt(givenPassword) ){
 
-                members[indexOfUsername].setLoggedIn(true);
+//                members[indexOfUsername].setLoggedIn(true);
                 indexOfLoggedInUser = indexOfUsername;
 
                 System.out.println("User: " + members[indexOfLoggedInUser].getUsername() + ", has successfully logged in");
@@ -321,4 +219,12 @@ public class MemberCollection {
 
 
     }
+
+    public static Member[] getMembers() {
+        return members;
+    }
+    public static int getIndexOfLoggedInUser() {
+        return indexOfLoggedInUser;
+    }
+
 }

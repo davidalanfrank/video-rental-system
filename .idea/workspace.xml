@@ -6,13 +6,14 @@
       <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/BinaryTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/BinaryTree.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/MemberCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/MemberCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/Movie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/MovieCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/MovieCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/QuickSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/QuickSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/cab301-a1/movie/UserMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cab301-a1/movie/UserMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie/MemberCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/MemberCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/movie/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/Movie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie/MovieCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/MovieCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movie/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/QuickSort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie/UserMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +52,9 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MovieCollectionDep">
     <configuration name="BinaryTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="movie.BinaryTree" />
       <module name="cab301-a1" />
@@ -105,12 +107,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuickSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="movie.QuickSort" />
-      <module name="cab301-a1" />
+    <configuration name="Summation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="summation.Summation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="movie.*" />
+          <option name="PATTERN" value="summation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MovieCollectionDep" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.BinaryTree" />
+        <item itemvalue="Application.Summation" />
         <item itemvalue="Application.MemberCollection" />
-        <item itemvalue="Application.MovieCollection" />
-        <item itemvalue="Application.QuickSort" />
       </list>
     </recent_temporary>
   </component>
@@ -146,6 +147,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="73" y="202" key="#Project_Structure/0.23.1680.1027@0.23.1680.1027" timestamp="1587616432995" />
+    <state x="273" y="201" key="#Summation" timestamp="1590953602180">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="273" y="201" key="#Summation/0.23.1680.1027@0.23.1680.1027" timestamp="1590953602180" />
     <state x="238" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1590759810695">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -154,50 +159,55 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="186" y="428" width="467" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.1027@0.23.1680.1027" timestamp="1590816652370" />
-    <state width="710" height="786" key="GridCell.Tab.0.bottom" timestamp="1590943848559">
+    <state x="358" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590960914336">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="358" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1590960914336" />
+    <state width="908" height="605" key="GridCell.Tab.0.bottom" timestamp="1590977956616">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="349" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1590811544723" />
-    <state width="710" height="786" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1590943848559" />
-    <state width="710" height="786" key="GridCell.Tab.0.center" timestamp="1590943848558">
+    <state width="908" height="605" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1590977956616" />
+    <state width="908" height="605" key="GridCell.Tab.0.center" timestamp="1590977956615">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="349" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1590811544722" />
-    <state width="710" height="786" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1590943848558" />
-    <state width="710" height="786" key="GridCell.Tab.0.left" timestamp="1590943848558">
+    <state width="908" height="605" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1590977956615" />
+    <state width="908" height="605" key="GridCell.Tab.0.left" timestamp="1590977956614">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="349" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1590811544721" />
-    <state width="710" height="786" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1590943848558" />
-    <state width="710" height="786" key="GridCell.Tab.0.right" timestamp="1590943848559">
+    <state width="908" height="605" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1590977956614" />
+    <state width="908" height="605" key="GridCell.Tab.0.right" timestamp="1590977956615">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="349" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1590811544722" />
-    <state width="710" height="786" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1590943848559" />
-    <state width="1343" height="435" key="GridCell.Tab.1.bottom" timestamp="1590849231761">
+    <state width="908" height="605" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1590977956615" />
+    <state width="908" height="260" key="GridCell.Tab.1.bottom" timestamp="1590977292674">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1343" height="435" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1590849231761" />
-    <state width="1343" height="435" key="GridCell.Tab.1.center" timestamp="1590849231761">
+    <state width="908" height="260" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1590977292674" />
+    <state width="908" height="260" key="GridCell.Tab.1.center" timestamp="1590977292673">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1343" height="435" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1590849231761" />
-    <state width="1343" height="435" key="GridCell.Tab.1.left" timestamp="1590849231761">
+    <state width="908" height="260" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1590977292673" />
+    <state width="908" height="260" key="GridCell.Tab.1.left" timestamp="1590977292673">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1343" height="435" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1590849231761" />
-    <state width="1343" height="435" key="GridCell.Tab.1.right" timestamp="1590849231761">
+    <state width="908" height="260" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1590977292673" />
+    <state width="908" height="260" key="GridCell.Tab.1.right" timestamp="1590977292674">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1343" height="435" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1590849231761" />
+    <state width="908" height="260" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1590977292674" />
     <state x="872" y="237" key="NewModule_or_Project.wizard" timestamp="1590237194137">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="872" y="237" key="NewModule_or_Project.wizard/0.23.1680.1027@0.23.1680.1027" timestamp="1590237194137" />
-    <state x="328" y="106" key="SettingsEditor" timestamp="1590810514251">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="328" y="127" key="SettingsEditor" timestamp="1590959489941">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="328" y="106" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1590810514251" />
+    <state x="328" y="127" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1590959489941" />
     <state x="473" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1590899375725">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -208,14 +218,14 @@
     </state>
     <state x="840" y="0" width="840" height="1050" key="dock-window-1/0.0.1680.1050@0.0.1680.1050" timestamp="1590196988044" />
     <state x="840" y="23" width="840" height="1027" key="dock-window-1/0.23.1680.1027@0.23.1680.1027" timestamp="1590678704984" />
-    <state x="30" y="73" width="1367" height="977" key="find.popup" timestamp="1590943241505">
+    <state x="203" y="23" width="1335" height="977" key="find.popup" timestamp="1590973353760">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="30" y="51" width="1367" height="999" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1590811419499" />
-    <state x="30" y="73" width="1367" height="977" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1590943241505" />
-    <state x="97" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1590668911124">
+    <state x="203" y="23" width="1335" height="977" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1590973353760" />
+    <state x="97" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1590965326239">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="97" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1590668911124" />
+    <state x="97" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1590965326239" />
   </component>
 </project>

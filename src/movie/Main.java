@@ -35,9 +35,9 @@ public class Main {
 
         MemberCollection allMembers = new MemberCollection();
 //
-//        allMembers.populateListWithTestMembers();
+        allMembers.populateListWithTestMembers();
 //
-//        allMovies.populateBinaryTreeWithMoviesTitles();
+        allMovies.populateBinaryTreeWithMoviesTitles();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -125,7 +125,8 @@ public class Main {
                                 allMembers.findMember();
                                 break;
                             default:
-                                System.out.println("Default Invalid input");
+                                System.out.println("Default: Invalid input");
+                                break;
 
                         }
 

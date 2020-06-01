@@ -33,18 +33,18 @@ public class Movie {
 
     public void incrementCopiesAvailable(){
         if (copiesAvailable > copies){
-            System.out.println("Opps, You've tried to return an non existent copy");
+            System.out.println("Oops, You've tried to return an non existent copy");
         }else{
-            System.out.println("Incremented copies available");
+
             this.copiesAvailable++;
         }
 
     }
     public void decrementCopiesAvailable(){
         if (copiesAvailable < 1){
-            System.out.println("Opps, there is no more copies to lease");
+            System.out.println("Oops, there is no more copies to lease");
         }else{
-            System.out.println("Decremented copies available");
+
             this.copiesAvailable--;
         }
 

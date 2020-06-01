@@ -162,7 +162,6 @@ public class BinaryTree {
     * to the two dimensional array.
     * */
     private void arbitraryTraverse(Node focusNode){
-
         // Prepares a new cell to be placed in the array
         String[] newCell = new String[2];
         if(focusNode != null ){
@@ -192,8 +191,8 @@ public class BinaryTree {
         int i = 0;
         while(i < n  ){
             arrayToSort[i][0]=i;
-            refArr[i][0] = Integer.toString(i);
             arrayToSort[i][1]= Integer.parseInt(titleAndTimesBorrowed[i][1]);
+            refArr[i][0] = Integer.toString(i);
             refArr[i][1] = titleAndTimesBorrowed[i][0];
             i++;
         }

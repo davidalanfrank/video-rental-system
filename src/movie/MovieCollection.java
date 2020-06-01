@@ -147,7 +147,7 @@ public class MovieCollection {
         input = reader.readLine();
         newMovie.setCopies(Integer.parseInt(input));
 
-        System.out.println("Enter how many times this movie has been rented: ");
+        System.out.println("Enter how many times has this movie has been rented: ");
         input = reader.readLine();
         newMovie.setCopies(Integer.parseInt(input));
 
@@ -257,43 +257,53 @@ public class MovieCollection {
      */
     public static void borrowMovie() throws IOException {
 
-        // If the member already has 10 movies borrowed
-        if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().size() >= 10){
-            System.out.println("Sorry, you are already borrowing 10 movies which is a members limit. \n\tPlease return some movies before borrowing again.");
+        // Count the nodes in the binary search tree
+        bTree.preOrderTraversal();
 
+        if(bTree.sizeOfTree < 1) {
+            System.out.println("There are no movies to borrow");
         }else{
+            // If the member already has 10 movies borrowed
+            if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().size() >= 10){
+                System.out.println("Sorry, you are already borrowing 10 movies which is a members limit. \n\tPlease return some movies before borrowing again.");
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            }else{
 
-            String input;
-            System.out.println("Enter movie title: ");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            input = reader.readLine();
+                String input;
+                System.out.println("Enter movie title: ");
 
-            try{
-                String movieTitle = bTree.SearchTitle(input).getTitle();
+                input = reader.readLine();
 
-                // If the title that the member is looking for exists in their borrowed movies
-                if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().contains(movieTitle))
-                {
-                    System.out.println("It seems you are already borrowing a copy of " + movieTitle + ". Members may only borrow one copy of the same movie DVD at a time.");
-                }else{
-                    if(bTree.SearchTitle(input).getCopiesAvailable() < 1){
-                        System.out.println("Sorry, there are no more copies available for " + movieTitle);
+                try{
+                    String movieTitle = bTree.SearchTitle(input).getTitle();
+
+                    // If the title that the member is looking for exists in their borrowed movies
+                    if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().contains(movieTitle))
+                    {
+                        System.out.println("It seems you are already borrowing a copy of " + movieTitle + ". Members may only borrow one copy of the same movie DVD at a time.");
                     }else{
-                        System.out.println("Movie Borrowed! Enjoy your viewing(s) of " + movieTitle  );
-                        MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().add(movieTitle);
-                        bTree.SearchTitle(input).decrementCopiesAvailable();
-                        bTree.SearchTitle(input).incrementTimesRented();
+                        if(bTree.SearchTitle(input).getCopiesAvailable() < 1){
+                            System.out.println("Sorry, there are no more copies available for " + movieTitle);
+                        }else{
+                            System.out.println("Movie Borrowed! Enjoy your viewing(s) of " + movieTitle  );
+                            MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().add(movieTitle);
+                            bTree.SearchTitle(input).decrementCopiesAvailable();
+                            bTree.SearchTitle(input).incrementTimesRented();
 
 
+                        }
                     }
-                }
 
-            }catch(NullPointerException e){
-                System.out.println("Movie title doesn't exist");
+                }catch(NullPointerException e){
+                    System.out.println("Movie title doesn't exist");
+                }
             }
+
+
         }
+
 
 
 
@@ -305,32 +315,41 @@ public class MovieCollection {
      */
     public static void returnMovie() throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        // If member has no borrowed movies
+        if(MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().size() < 1){
+            System.out.println("You have no movies to return");
 
-        String input;
-        System.out.println("Enter movie title: ");
+        }else{
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        input = reader.readLine();
+            String input;
+            System.out.println("Enter movie title: ");
+
+            input = reader.readLine();
 
 
-        try{
-            // Returns the title or null
-            String movieTitle = bTree.SearchTitle(input).getTitle();
+            try{
+                // Returns the title or null
+                String movieTitle = bTree.SearchTitle(input).getTitle();
 
-            // If the member is borrowing the given movie title
-            if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().contains(bTree.SearchTitle(movieTitle).getTitle())){
-                // Remove that title from their list
-                MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().remove(bTree.SearchTitle(movieTitle).getTitle());
-                bTree.SearchTitle(input).incrementCopiesAvailable();
-                System.out.println("Movie Returned! Thank you, we hope you enjoyed " + bTree.SearchTitle(input).getTitle());
+                // If the member is borrowing the given movie title
+                if( MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().contains(bTree.SearchTitle(movieTitle).getTitle())){
+                    // Remove that title from their list
+                    MemberCollection.getMembers()[MemberCollection.getIndexOfLoggedInUser()].getBorrowedMovies().remove(bTree.SearchTitle(movieTitle).getTitle());
+                    bTree.SearchTitle(input).incrementCopiesAvailable();
+                    System.out.println("Movie Returned! Thank you, we hope you enjoyed " + bTree.SearchTitle(input).getTitle());
 
-            }else{
-                System.out.println("Oops, you aren't currently borrowing " + bTree.SearchTitle(input).getTitle() );
+                }else{
+                    System.out.println("Oops, you aren't currently borrowing " + bTree.SearchTitle(input).getTitle() );
+                }
+
+            }catch(NullPointerException e){
+                System.out.println("Movie title doesn't exist");
             }
-
-        }catch(NullPointerException e){
-            System.out.println("Movie title doesn't exist");
         }
+
+
+
 
     }
 

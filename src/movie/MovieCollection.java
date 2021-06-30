@@ -190,8 +190,8 @@ public class MovieCollection {
 
                 if(n<10){
                     // If there are less than 10 movies in the collection
-                    for(int i = n; i > 0; i-- ){
-                        System.out.println(bTree.refArr[arrayToSort[i - 1][0]][1]);
+                    for(int i = 0; i < n ; i++){
+                        System.out.println(bTree.refArr[arrayToSort[i][0]][1]);
 
                     }
                 }else{
@@ -419,107 +419,10 @@ public class MovieCollection {
 //        newMovie3.setCopies(2);
 //        newMovie3.setTimesRented(100);
 //        bTree.addNode(newMovie3);
+
 //
-//        Movie newMovie4 = new Movie();
-//        newMovie4.setTitle("The Cameras");
-//        newMovie4.setStarring("Liam Hemsworth");
-//        newMovie4.setDirector("Cam Eria");
-//        newMovie4.setGenre(Movie.Genres.SciFi);
-//        newMovie4.setClassification(Movie.Classifications.M);
-//        newMovie4.setDuration(134);
-//        newMovie4.setReleaseDate("1/9/2007");
-//        newMovie4.setCopies(12);
-//        newMovie4.setTimesRented(101);
-//        bTree.addNode(newMovie4);
-//
-//        Movie newMovie5 = new Movie();
-//        newMovie5.setTitle("Sinbad");
-//        newMovie5.setStarring("\t\n" +
-//                "Nathanial Greiger,\n");
-//        newMovie5.setDirector("\tThomas Chaplin");
-//        newMovie5.setGenre(Movie.Genres.SciFi);
-//        newMovie5.setClassification(Movie.Classifications.M);
-//        newMovie5.setDuration(200);
-//        newMovie5.setReleaseDate("1/9/2016");
-//        newMovie5.setCopies(2);
-//        newMovie5.setTimesRented(299);
-//        bTree.addNode(newMovie5);
-//
-//        Movie newMovie6 = new Movie();
-//        newMovie6.setTitle("Overhaul");
-//        newMovie6.setStarring("Antonito Montana");
-//        newMovie6.setDirector("Roberto Alto");
-//        newMovie6.setGenre(Movie.Genres.Thriller);
-//        newMovie6.setClassification(Movie.Classifications.MA);
-//        newMovie6.setDuration(190);
-//        newMovie6.setReleaseDate("19/5/2019");
-//        newMovie6.setCopies(45);
-//        newMovie6.setTimesRented(87);
-//        bTree.addNode(newMovie6);
-//
-//        Movie newMovie7 = new Movie();
-//        newMovie7.setTitle("Movie 7");
-//        newMovie7.setStarring("7 actors");
-//        newMovie7.setDirector("Director 7");
-//        newMovie7.setGenre(Movie.Genres.Thriller);
-//        newMovie7.setClassification(Movie.Classifications.MA);
-//        newMovie7.setDuration(109);
-//        newMovie7.setReleaseDate("7/7/2019");
-//        newMovie7.setCopies(2);
-//        newMovie7.setTimesRented(7000);
-//        bTree.addNode(newMovie7);
-//
-//        Movie newMovie8 = new Movie();
-//        newMovie8.setTitle("Movie 8");
-//        newMovie8.setStarring("8 Actors");
-//        newMovie8.setDirector("Director 8");
-//        newMovie8.setGenre(Movie.Genres.SciFi);
-//        newMovie8.setClassification(Movie.Classifications.M);
-//        newMovie8.setDuration(88);
-//        newMovie8.setReleaseDate("8/8/2008");
-//        newMovie8.setCopies(8);
-//        newMovie8.setTimesRented(88);
-//        bTree.addNode(newMovie8);
-//
-//
-//        Movie newMovie9 = new Movie();
-//        newMovie9.setTitle("Movie 9");
-//        newMovie9.setStarring("9 Actors");
-//        newMovie9.setDirector("Director 9");
-//        newMovie9.setGenre(Movie.Genres.SciFi);
-//        newMovie9.setClassification(Movie.Classifications.M);
-//        newMovie9.setDuration(99);
-//        newMovie9.setReleaseDate("0/9/2019");
-//        newMovie9.setCopies(9);
-//        newMovie9.setTimesRented(0);
-//        bTree.addNode( newMovie9);
-//
-//        Movie newMovie10 = new Movie();
-//        newMovie10.setTitle("Bee Movie");
-//        newMovie10.setStarring("10 Actors");
-//        newMovie10.setDirector("Director 10");
-//        newMovie10.setGenre(Movie.Genres.Thriller);
-//        newMovie10.setClassification(Movie.Classifications.MA);
-//        newMovie10.setDuration(190);
-//        newMovie10.setReleaseDate("10/10/2019");
-//        newMovie10.setCopies(10);
-//        newMovie10.setTimesRented(10);
-//        bTree.addNode(newMovie10);
-//
-//
-//        Movie newMovie11 = new Movie();
-//        newMovie11.setTitle("Movie 11");
-//        newMovie11.setStarring("11 Actors");
-//        newMovie11.setDirector("Director 10");
-//        newMovie11.setGenre(Movie.Genres.Thriller);
-//        newMovie11.setClassification(Movie.Classifications.MA);
-//        newMovie11.setDuration(190);
-//        newMovie11.setReleaseDate("10/10/2019");
-//        newMovie11.setCopies(10);
-//        newMovie11.setTimesRented(11);
-//        bTree.addNode(newMovie11);
-//
-//
+
+
 //
 //
 //
